@@ -48,6 +48,14 @@
                     Usuário ou senha inválido(s)
                   </div>
                 <? }; ?>
+                <!-- erro 2 -->
+                <?
+                if (isset($_GET['login']) && $_GET['login'] == 'erro2') {
+                  ?>
+                  <div class="text-danger">
+                    Por favor, faça login antes de prosseguir
+                  </div>
+                <? }; ?>
 
 
               </div>

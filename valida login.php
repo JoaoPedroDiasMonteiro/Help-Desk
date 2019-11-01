@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+print_r($_SESSION);
 $_POST['email'];
 $_POST['password'];
 
@@ -22,8 +23,10 @@ foreach ($usuarios_app as $user) {
 
 if ($usuario_autenticado) {
     echo 'aaeeee';
+    $_SESSION['autenticado'] = 'sim';
 } else {
     header('Location: index.php?login=erro');
+    $_SESSION['autenticado'] = 'não';
 }
 
 // $_GET['email'];
