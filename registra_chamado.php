@@ -1,6 +1,10 @@
 <?php
+// trocando os textos
+str_replace('***:', '***', $_POST['titulo']);
+str_replace('***:', '***', $_POST['categoria']);
+str_replace('***:', '***', $_POST['descricao']);
 // escrevendo texto
-$texto = '***TÍTULO***: ' . $_POST['titulo'] . ' ***CATEGORIA***: ' . $_POST['categoria'] . ' ***DESCRIÇÃO***: ' . $_POST['descricao'] . PHP_EOL;
+$texto = $_POST['titulo'] . ' ***: ' . $_POST['categoria'] . ' ***: ' . $_POST['descricao'] . PHP_EOL;
 
 // abrindo o arquivo
 $arquivo = fopen('arquivo.txt', 'a');
