@@ -61,11 +61,16 @@ fclose($arquivo);
             <? foreach ($chamados as $chamado) { ?>
 
               <?php
-
                 $chamado_dados = explode('***:', $chamado);
                 if (count($chamado_dados) < 3) {
                   continue;
-                }
+                }  
+                if ($_SESSION['user_perfil'] == 1) {
+                  // só exibir o chamado se ele for criado pelo usuario
+                  if ($_SESSION['id'] != $chamado_dados[3]) {
+                    continue;
+                  }
+                }              
                 ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
