@@ -10,8 +10,23 @@ $arquivo = fopen('arquivo.txt', 'r');
 while (!feof($arquivo)) { // testa pelo fim do arquivo
   // linha
   $registro = fgets($arquivo);
-  $chamados[] = $registro;
+  // pega os dados do texto e separa em um array
+  $filtrar_chamados = explode('***:', $registro);
+  if ($_SESSION['user_perfil'] == 1) {
+    // evita colocar chamados incompletos no array
+    if (count($filtrar_chamados) < 3) {
+      continue;
+    }
+    // só exibir o chamado se ele for criado pelo usuario
+    if ($_SESSION['id'] == $filtrar_chamados[3]) {
+      $chamados[] = $registro;
+    };
+  } else {
+    $chamados[] = $registro;
+  };
 };
+
+
 // fecha o arquivo aberto
 fclose($arquivo);
 
@@ -64,13 +79,7 @@ fclose($arquivo);
                 $chamado_dados = explode('***:', $chamado);
                 if (count($chamado_dados) < 3) {
                   continue;
-                }  
-                if ($_SESSION['user_perfil'] == 1) {
-                  // só exibir o chamado se ele for criado pelo usuario
-                  if ($_SESSION['id'] != $chamado_dados[3]) {
-                    continue;
-                  }
-                }              
+                }
                 ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
