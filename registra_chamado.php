@@ -8,7 +8,7 @@ str_replace('***:', '***', $_POST['descricao']);
 $texto =  $_POST['titulo'] . ' ***: ' . $_POST['categoria'] . ' ***: ' . $_POST['descricao'] . '***:' . $_SESSION['id'] . PHP_EOL;
 
 // abrindo o arquivo
-$arquivo = fopen('arquivo.txt', 'a');
+$arquivo = fopen('../../app_help_desk/arquivo.txt', 'a');
 
 // escrevendo o texto no arquivo
 fwrite($arquivo, $texto);
